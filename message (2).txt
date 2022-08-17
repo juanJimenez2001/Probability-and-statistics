@@ -1,0 +1,140 @@
+
+help(boot)
+help(boot.ci)
+
+
+#Media Sleeptime Mujeres
+
+
+set.seed(2021)
+
+Mboot <- boot(Sample200[Sample200$Sex=="M",][,2],function(x,i) mean(x[i]),R=1000)
+Mboot
+
+bci <- boot.ci(Mboot,conf = c(0.90,0.95,0.99),type=c("norm"))
+bci
+
+IntervaloConfianzaMedias90MSVC
+IntervaloConfianzaMedias95MSVC
+IntervaloConfianzaMedias99MSVC
+
+
+
+
+
+#Media Sleeptime Varones
+
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="V",][,2],function(x,i) mean(x[i]),R=1000)
+Mboot
+
+bci <- boot.ci(Mboot,conf = c(0.90,0.95,0.99),type=c("norm"))
+bci
+
+meanVaronesSleeptime
+mean(Data$sleeptime[Data$Sex=="V"])
+
+IntervaloConfianzaMedias90VSVC
+IntervaloConfianzaMedias95VSVC
+IntervaloConfianzaMedias99VSVC
+#Media Steps Mujeres
+
+mean(Data$steps[Data$Sex=="M"])
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="M",][,3],function(x,i) mean(x[i]),R=1000)
+Mboot
+
+bci <- boot.ci(Mboot,conf = c(0.90,0.95,0.99),type=c("norm"))
+bci
+
+
+IntervaloConfianzaMedias90MStVC
+IntervaloConfianzaMedias95MStVC
+IntervaloConfianzaMedias99MStVC
+
+
+
+#Media Steps Varones
+
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="V",][,3],function(x,i) mean(x[i]),R=1000)
+Mboot
+
+bci <- boot.ci(Mboot,conf = c(0.90,0.95,0.99),type=c("norm"))
+bci
+
+mean(Data$steps[Data$Sex=="V"])
+
+IntervaloConfianzaMedias90VStVC
+IntervaloConfianzaMedias95VStVC
+IntervaloConfianzaMedias99VStVC
+
+
+
+
+
+
+#Varianza Sleeptime Mujeres
+
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="M",][,2],function(x,i) var(x[i]),R=1000)
+
+Mboot
+bci <- boot.ci(Mboot,conf =c(0.90,0.95,0.99) ,type=c("norm"))
+bci
+var(Data$sleeptime[Data$Sex=="M"])
+IntConf90MS
+IntConf95MS
+IntConf99MS
+
+
+#Varianza Sleeptime Varones
+
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="V",][,2],function(x,i) var(x[i]),R=1000)
+Mboot
+bci <- boot.ci(Mboot,conf =c(0.90,0.95,0.99) ,type=c("norm"))
+bci
+IntConf99VS
+IntConf90VS
+IntConf95VS
+IntConf99VS
+#Varianza Steps Mujeres
+
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="M",][,3],function(x,i) var(x[i]),R=1000)
+Mboot
+
+bci <- boot.ci(Mboot,conf =c(0.90,0.95,0.99) ,type=c("norm"))
+bci
+
+IntConf90MSt
+IntConf95MSt
+IntConf99MSt
+
+#Varianza Steps Varones
+set.seed(2021)
+Mboot <- boot(Sample200[Sample200$Sex=="V",][,3],function(x,i) var(x[i]) ,R=1000)
+Mboot
+bci <- boot.ci(Mboot,conf =c(0.90,0.95,0.99) ,type=c("norm"))
+bci
+var(Data$steps[Data$Sex=="V"])
+
+IntConf90VSt
+IntConf95VSt
+IntConf99VSt
+
+
+
+#Proporcion Varones
+
+set.seed(2021)
+Mboot <- boot(Sample200[,1],function(x,i) mean(x[i]=="V"),R=1000)
+Mboot
+bci90 <- boot.ci(Mboot,conf =c(0.90,0.95,0.99) ,type=c("norm"))
+bci90
+
+IntConf90V
+IntConf95V
+IntConf99V
+
